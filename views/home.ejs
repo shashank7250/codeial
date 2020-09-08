@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>
+            <%= locals.title%>
+        </title>
+    </head>>
+    <body>
+<h1> TODO LIST </h1>
+<form action="/add-list" method="POST">
+   Description:
+<br>
+<input type="text" name="description" placeholder="what do you need to do">
+<br>
+<select name="category">
+   
+    <option value=""> Category</option>
+    <option value="personal">personal</option>
+    <option value="office">office</option>
+    <option value="home">home</option>
+</select>
+<input type="date" name="date" >
+<button type="submit">ADD </button>
+</form>
+<div>
+
+    <form action="/delete-list" method="GET">
+   <ul>
+<% for (let i of todo_list ) { %> 
+   
+    <div class="list"> 
+        <li>
+         <input type="checkbox" name="todo" value='{"id":"<%=i._id%>"}'>
+             <p><%= i.description %></p>
+             <p><%= i.category %></p>
+             <p><%= i.date %></p>
+        </li>
+     </div>
+   
+     <% } %>
+   </ul>
+     <button type="submit">delete </button>
+    </form>
+    
+</div>
+
+   
+ 
+ 
+    </body>
+</html>
